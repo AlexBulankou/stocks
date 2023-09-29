@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-service
+  labels:
+    app: react-app
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 3000
+  selector:
+    app: react-app
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-deployment
+  labels:
+    app: react-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: react-app
+  template:
+    metadata:
+      labels:
+        app: react-app
+    spec:
+      containers:
+      - name: react-container
+        image: bulankou/stocks-fe:latest
+        ports:
+        - containerPort: 3000
