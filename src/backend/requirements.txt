@@ -1,0 +1,9 @@
+ray[default]
+google-cloud-bigquery
+scikit-learn
+google-cloud-storage
+google-auth
+db-dtypes
+google-cloud-bigquery[pandas]
+tensorflow
+pandas
